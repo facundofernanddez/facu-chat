@@ -7,6 +7,8 @@ import { authOptions } from "./lib/auth";
 export default async function postData(formData: FormData) {
   "use server";
 
+  const Pusher = require("pusher");
+
   const session = await getServerSession(authOptions);
   const message = formData.get("message");
 
@@ -23,5 +25,17 @@ export default async function postData(formData: FormData) {
         },
       },
     },
+  });
+
+  const pusher = new Pusher({
+    appId: process.env.PUSHER_APP_ID,
+    key: process.env.NEXT_PUBLIC_PUSHER_KEY,
+    secret: process.env.PUSHER_SECRET,
+    cluster: process.env.PUSHER_CLUSTER,
+    useTLS: true,
+  });
+
+  pusher.trigger("chat", "hello", {
+    message: `${JSON.stringify(data)}\n\n`,
   });
 }
