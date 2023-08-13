@@ -20,7 +20,7 @@ export default function ChatComponent({ data }: iAppProps) {
 
   useEffect(() => {
     var pusher = new Pusher(process.env.NEXT_PUBLIC_PUSHER_KEY as string, {
-      cluster: process.env.PUSHER_CLUSTER as string,
+      cluster: "us2",
     });
 
     var channel = pusher.subscribe("chat");
