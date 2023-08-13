@@ -30,7 +30,7 @@ export function MainLogin() {
       onClick={() => signIn("github")}
       className="w-full flex items-center justify-center gap-2 rounded-lg bg-indigo-600 px-8 py-3 texte-center text-sm font-semibold text-white ring-indigo-300 transition duration-100 hover:bg-indigo-700 md:text-base"
     >
-      Login with GitHub
+      Login with Github
     </button>
   );
 }
